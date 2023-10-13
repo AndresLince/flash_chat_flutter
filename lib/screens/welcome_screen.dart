@@ -21,6 +21,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     );
 
     controller.forward();
+
+    controller.addListener(() {
+      print(controller.value);
+    });
   }
   @override
   Widget build(BuildContext context) {
