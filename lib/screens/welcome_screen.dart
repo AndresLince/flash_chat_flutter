@@ -23,6 +23,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     controller.forward();
 
     controller.addListener(() {
+      setState(() {
+
+      });
       print(controller.value);
     });
   }
