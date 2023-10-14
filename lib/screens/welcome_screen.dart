@@ -23,7 +23,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 
     animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
 
-    controller.reverse(from: 1.0);
+    controller.forward();
+
+    animation.addStatusListener((status) {
+      print(status);
+      if (status == AnimationStatus.completed) {
+        controller.reverse(from: 1);
+      } else if (status == AnimationStatus.dismissed){
+        controller.forward();
+      }
+    });
 
     controller.addListener(() {
       setState(() {
