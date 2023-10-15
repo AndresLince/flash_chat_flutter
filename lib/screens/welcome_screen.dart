@@ -90,7 +90,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
             SizedBox(
               height: 48.0,
             ),
-            RoundedButton(),
+            RoundedButton(
+              color: Colors.lightBlueAccent,
+              text:'Log In',
+              onPressedFunction: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              }
+            ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
@@ -118,8 +124,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
 }
 
 class RoundedButton extends StatelessWidget {
+  final Color color;
+  final String text;
+  final void Function()? onPressedFunction;
   const RoundedButton({
-    super.key,
+    required this.color,
+    required this.text,
+    required this.onPressedFunction
   });
 
   @override
@@ -128,17 +139,14 @@ class RoundedButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
         elevation: 5.0,
-        color: Colors.lightBlueAccent,
+        color: color,
         borderRadius: BorderRadius.circular(30.0),
         child: MaterialButton(
-          onPressed: () {
-            //Go to login screen.
-            Navigator.pushNamed(context, LoginScreen.id);
-          },
+          onPressed: onPressedFunction,
           minWidth: 200.0,
           height: 42.0,
           child: Text(
-            'Log In',
+            text,
           ),
         ),
       ),
