@@ -41,56 +41,51 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 48.0,
               ),
               TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your email'
-                )
-              ),
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email')),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: kTextFieldDecoration
-              ),
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration),
               SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
-                  color: Colors.blueAccent,
-                  text: 'Register',
-                  onPressedFunction: () async {
-                    print(email);
-                    print(password);
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final newUser = await _auth.createUserWithEmailAndPassword(
-                          email: email,
-                          password: password
-                      );
-                      if (newUser != null) {
-                        Navigator.pushNamed(context, ChatScreen.id);
-                      }
-                      setState(() {
-                        showSpinner = false;
-                      });
-                    } catch(e) {
-                      setState(() {
-                        showSpinner = false;
-                      });
-                      print(e);
+                color: Colors.blueAccent,
+                text: 'Register',
+                onPressedFunction: () async {
+                  print(email);
+                  print(password);
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, ChatScreen.id);
                     }
-                  },
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  } catch (e) {
+                    setState(() {
+                      showSpinner = false;
+                    });
+                    print(e);
+                  }
+                },
               ),
             ],
           ),
