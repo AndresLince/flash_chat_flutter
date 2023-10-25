@@ -41,22 +41,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 48.0,
               ),
               TextField(
-                onChanged: (value) {
-                  this.email = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your email'
-                )
-              ),
+                  onChanged: (value) {
+                    this.email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email')),
               SizedBox(
                 height: 8.0,
               ),
               TextField(
-                onChanged: (value) {
-                  this.password = value;
-                },
-                decoration: kTextFieldDecoration
-              ),
+                  onChanged: (value) {
+                    this.password = value;
+                  },
+                  decoration: kTextFieldDecoration),
               SizedBox(
                 height: 24.0,
               ),
@@ -69,25 +66,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {
                       showSpinner = true;
                     });
-                     try {
-                       final user = await this._auth.signInWithEmailAndPassword(
-                           email: email,
-                           password: password
-                       );
-                       if (user != null) {
-                         Navigator.pushNamed(context, ChatScreen.id);
-                       }
-                       setState(() {
-                         showSpinner = false;
-                       });
-                     } catch (e) {
-                       print(e);
-                       setState(() {
-                         showSpinner = false;
-                       });
-                     }
-                  }
-              ),
+                    try {
+                      final user = await this._auth.signInWithEmailAndPassword(
+                          email: email, password: password);
+                      if (user != null) {
+                        Navigator.pushNamed(context, ChatScreen.id);
+                      }
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    } catch (e) {
+                      print(e);
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    }
+                  }),
             ],
           ),
         ),
