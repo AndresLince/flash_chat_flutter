@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat_flutter/constants.dart';
 import 'package:flash_chat_flutter/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatScreen extends StatefulWidget {
   static String id = 'chat_screen';
@@ -10,6 +11,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  String messageText = '';
   @override
   void initState() {
     super.initState();
@@ -55,6 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: TextField(
                       onChanged: (value) {
                         //Do something with the user input.
+                        messageText = messageText;
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
