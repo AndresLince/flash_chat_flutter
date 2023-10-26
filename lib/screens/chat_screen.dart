@@ -17,7 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     getCurrentUser();
   }
-
+  final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late User loggedInUser;
   void getCurrentUser() async {
@@ -57,7 +57,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: TextField(
                       onChanged: (value) {
                         //Do something with the user input.
-                        messageText = messageText;
+                        messageText = value;
                       },
                       decoration: kMessageTextFieldDecoration,
                     ),
@@ -65,6 +65,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       //Implement send functionality.
+                      _firestore.collection('messages').add({
+                        'text': messageText,
+                        'sender': loggedInUser.email
+                      });
                     },
                     child: Text(
                       'Send',
