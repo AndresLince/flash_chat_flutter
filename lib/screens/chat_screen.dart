@@ -27,6 +27,13 @@ class _ChatScreenState extends State<ChatScreen> {
       print(loggedInUser.email);
     }
   }
+
+  void getMessage() async {
+    final messages = await _firestore.collection('messages').get();
+    for (var message in messages.docs) {
+      print(message.data());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
