@@ -17,6 +17,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     getCurrentUser();
   }
+
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late User loggedInUser;
@@ -42,6 +43,7 @@ class _ChatScreenState extends State<ChatScreen> {
       }
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +80,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 for (var message in messages!) {
                   final messageText = message.get('text');
                   final messageSender = message.get('sender');
-                  final messageWidget = Text('$messageText from $messageSender');
+                  final messageWidget =
+                      Text('$messageText from $messageSender');
                   messageWidgets.add(messageWidget);
                 }
                 return Column(
@@ -104,10 +107,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   TextButton(
                     onPressed: () {
                       //Implement send functionality.
-                      _firestore.collection('messages').add({
-                        'text': messageText,
-                        'sender': loggedInUser.email
-                      });
+                      _firestore.collection('messages').add(
+                          {'text': messageText, 'sender': loggedInUser.email});
                     },
                     child: Text(
                       'Send',
