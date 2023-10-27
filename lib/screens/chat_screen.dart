@@ -84,8 +84,10 @@ class _ChatScreenState extends State<ChatScreen> {
                       Text('$messageText from $messageSender');
                   messageWidgets.add(messageWidget);
                 }
-                return Column(
-                  children: messageWidgets,
+                return Expanded(
+                  child: ListView(
+                    children: messageWidgets,
+                  ),
                 );
               },
               stream: _firestore.collection('messages').snapshots(),
