@@ -130,3 +130,18 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 }
+
+class MessageBubble extends StatelessWidget {
+  final String sender;
+  final String text;
+  MessageBubble({
+    required this.sender,
+    required this.text
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Text('$text from $sender');
+  }
+}
