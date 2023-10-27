@@ -67,7 +67,7 @@ class _ChatScreenState extends State<ChatScreen> {
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
               builder: (context, snapshot) {
-                List<Text> messageWidgets = [];
+                List<MessageBubble> messageWidgets = [];
                 if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(
@@ -80,8 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 for (var message in messages!) {
                   final messageText = message.get('text');
                   final messageSender = message.get('sender');
-                  final messageWidget =
-                      Text('$messageText from $messageSender');
+                  final messageWidget = MessageBubble(sender: messageSender, text: messageText);
                   messageWidgets.add(messageWidget);
                 }
                 return Expanded(
