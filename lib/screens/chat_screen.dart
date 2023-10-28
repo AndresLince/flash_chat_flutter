@@ -140,13 +140,14 @@ class MessageBubble extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
+          Text(sender),
           Material(
               borderRadius: BorderRadius.circular(30),
               color: Colors.lightBlueAccent,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
-                  '$text from $sender',
+                  text,
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ))
