@@ -80,15 +80,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 for (var message in messages!) {
                   final messageText = message.get('text');
                   final messageSender = message.get('sender');
-                  final messageWidget = MessageBubble(sender: messageSender, text: messageText);
+                  final messageWidget =
+                      MessageBubble(sender: messageSender, text: messageText);
                   messageWidgets.add(messageWidget);
                 }
                 return Expanded(
                   child: ListView(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 20
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                     children: messageWidgets,
                   ),
                 );
@@ -133,10 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
 class MessageBubble extends StatelessWidget {
   final String sender;
   final String text;
-  MessageBubble({
-    required this.sender,
-    required this.text
-  });
+  MessageBubble({required this.sender, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -144,20 +139,18 @@ class MessageBubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Column(
-        children: <Widget> [Material(
-          borderRadius: BorderRadius.circular(30),
-          color: Colors.lightBlueAccent,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Text(
-              '$text from $sender',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15
-              ),
-            ),
-          )
-        )],
+        children: <Widget>[
+          Material(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.lightBlueAccent,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Text(
+                  '$text from $sender',
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ))
+        ],
       ),
     );
   }
