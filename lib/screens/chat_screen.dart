@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = FirebaseFirestore.instance;
+late User loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static String id = 'chat_screen';
@@ -22,7 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   final _auth = FirebaseAuth.instance;
-  late User loggedInUser;
+
   void getCurrentUser() async {
     final user = await _auth.currentUser;
     if (user != null) {
@@ -123,6 +124,10 @@ class MessagesStream extends StatelessWidget{
         for (var message in messages!) {
           final messageText = message.get('text');
           final messageSender = message.get('sender');
+          final currentUser = loggedInUser.email;
+          if (currentUser == messageSender) {
+            //The message from the logged in user
+          }
           final messageWidget =
           MessageBubble(sender: messageSender, text: messageText);
           messageWidgets.add(messageWidget);
