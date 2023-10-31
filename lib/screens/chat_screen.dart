@@ -106,7 +106,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 }
 
-class MessagesStream extends StatelessWidget{
+class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -128,8 +128,7 @@ class MessagesStream extends StatelessWidget{
           if (currentUser == messageSender) {
             //The message from the logged in user
           }
-          final messageWidget =
-          MessageBubble(
+          final messageWidget = MessageBubble(
             sender: messageSender,
             text: messageText,
             isMe: currentUser == messageSender,
@@ -164,18 +163,14 @@ class MessageBubble extends StatelessWidget {
         children: <Widget>[
           Text(
             sender,
-            style: TextStyle(
-              color: Colors.black54,
-              fontSize: 12
-            ),
+            style: TextStyle(color: Colors.black54, fontSize: 12),
           ),
           Material(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30)
-              ),
-              color: isMe? Colors.lightBlueAccent: Colors.white,
+                  topLeft: Radius.circular(30),
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30)),
+              color: isMe ? Colors.lightBlueAccent : Colors.white,
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Text(
