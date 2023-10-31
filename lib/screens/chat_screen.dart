@@ -119,7 +119,7 @@ class MessagesStream extends StatelessWidget {
             ),
           );
         }
-        final messages = snapshot.data?.docs;
+        final messages = snapshot.data?.docs.reversed;
 
         for (var message in messages!) {
           final messageText = message.get('text');
@@ -137,6 +137,7 @@ class MessagesStream extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
+            reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             children: messageWidgets,
           ),
