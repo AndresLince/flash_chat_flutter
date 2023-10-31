@@ -129,7 +129,11 @@ class MessagesStream extends StatelessWidget{
             //The message from the logged in user
           }
           final messageWidget =
-          MessageBubble(sender: messageSender, text: messageText);
+          MessageBubble(
+            sender: messageSender,
+            text: messageText,
+            isMe: currentUser == messageSender,
+          );
           messageWidgets.add(messageWidget);
         }
         return Expanded(
@@ -147,7 +151,8 @@ class MessagesStream extends StatelessWidget{
 class MessageBubble extends StatelessWidget {
   final String sender;
   final String text;
-  MessageBubble({required this.sender, required this.text});
+  final bool isMe;
+  MessageBubble({required this.sender, required this.text, required this.isMe});
 
   @override
   Widget build(BuildContext context) {
